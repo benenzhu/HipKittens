@@ -1,0 +1,1 @@
+THUNDERKITTENS_ROOT=/root/HipKittens/ bear -- make -j
