@@ -35,8 +35,8 @@ __global__ __launch_bounds__(NUM_THREADS, 2)
 void micro_tk(const micro_globals g) {
     extern __shared__ alignment_dummy __shm[];
     shared_allocator al((int*)&__shm[0]);
-    st_bf<BLOCK_SIZE, K_STEP> (&As) = al.allocate<st_bf<BLOCK_SIZE, K_STEP>>();
-    st_bf<BLOCK_SIZE, K_STEP> (&Bs) = al.allocate<st_bf<BLOCK_SIZE, K_STEP>>();
+    st_bf<BLOCK_SIZE, K_STEP, st_16x32_s> (&As) = al.allocate<st_bf<BLOCK_SIZE, K_STEP, st_16x32_s>>();
+    st_bf<BLOCK_SIZE, K_STEP, st_16x32_s> (&Bs) = al.allocate<st_bf<BLOCK_SIZE, K_STEP, st_16x32_s>>();
 
     rt_bf<REG_BLOCK, DOT_SLICE> tiles[8];
     rt_fl<REG_BLOCK, REG_BLOCK, ducks::rt_layout::col> C_accum[2];
